@@ -63,22 +63,26 @@ function devide(a,b){
 
 function operation(input){
     if(input.includes("+")){
-        outCurrent.textContent="="+Number(calculatorObj.previousOut)+Number(calculatorObj.cuurentOut)
+        let result=Number(calculatorObj.previousOut)+Number(calculatorObj.cuurentOut);
+        outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"+"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
     }
     else if(input.includes("-")){
-        outCurrent.textContent="="+Number(calculatorObj.previousOut)-Number(calculatorObj.cuurentOut)
+        let result=Number(calculatorObj.previousOut)-Number(calculatorObj.cuurentOut);
+        outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"-"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
     }
     else if(input.includes("x")){
-        outCurrent.textContent="="+Number(calculatorObj.previousOut)*Number(calculatorObj.cuurentOut)
+        let result=Number(calculatorObj.previousOut)*Number(calculatorObj.cuurentOut)
+        outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"x"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
     }
     else if(input.includes("/")){
-        outCurrent.textContent="="+Number(calculatorObj.previousOut)/Number(calculatorObj.cuurentOut)
+        let result=Number(calculatorObj.previousOut)/Number(calculatorObj.cuurentOut)
+        outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"/"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
     }
