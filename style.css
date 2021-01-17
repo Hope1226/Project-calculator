@@ -1,0 +1,68 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-size: normal;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right,#a945fc,#fa1e9d);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.calculator{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(6,100px);
+    min-height: 100vh;
+    background-color: transparent;
+    
+    
+}
+
+.calculator > button{
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 2em;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+
+}
+
+
+button:hover{
+    background-color: rgba(255, 255, 255, .9);
+}
+
+
+.output{
+    background-color: rgba(8, 8, 8, .60);
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 5px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.two-span{
+    grid-column: span 2;
+}
+
+.current{
+    font-size: 50px;
+    color: white;
+}
+
+.previous{
+    font-size: large;
+    color: rgb(190, 190, 190);
+}
