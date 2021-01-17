@@ -7,41 +7,82 @@ const claerBtn=document.querySelector("#clearAll");
 const periodBtn=document.querySelector(".period");
 const equalBtn=document.querySelector("#equeal");
 
-function showTheCurrentInput(value){
-   
-    let p=document.createElement("p");
-    p.textContent=value;
-    p.style.display="inline";
-    outCurrent.appendChild(p);
+//input manipulation functions
+const calculatorObj={
+    cuurentOut: "",
+    previousOut: ""
 
 };
 
+function showTheCurrentInput(value){
+    if(value==="."&&calculatorObj.cuurentOut.includes("."))return
+   calculatorObj.cuurentOut+=value;
+   outCurrent.textContent=calculatorObj.cuurentOut;
+};
+
+
 function takeToPrevious(value){
-    let current=outCurrent.querySelectorAll("p");
-    let curArr="";
-    for(i=0; i<current.length; i++){
-        curArr += current[i].innerHTML;
-    }
-    outPrevious.textContent=curArr+value;
+    calculatorObj.previousOut=calculatorObj.cuurentOut;
+    outPrevious.textContent=calculatorObj.previousOut+value;
+    calculatorObj.cuurentOut="";
 }
 
 
 
 function deleteByEach(){
-    let current=outCurrent.querySelectorAll("p");
-    let curArr="";
-    for(i=0; i<current.length; i++){
-        curArr += current[i].innerHTML;
+    if(outCurrent.textContent===""){
+        let output=calculatorObj.previousOut.split("");
+        output.splice(output.length-1,1);
+        calculatorObj.previousOut=output.join("");
+        outPrevious.textContent=output.join("")
     }
-
-    let myArr=curArr.split("");
-    myArr.splice(myArr.length-1, 1);
-    outCurrent.textContent=myArr.join("")
-  
+    else{
+        let output=calculatorObj.cuurentOut.split("");
+        output.splice(output.length-1,1);
+        calculatorObj.cuurentOut=output.join("");
+        outCurrent.textContent=output.join("")
+    }
 }
 
+//operation functions
 
+function sum(a,b){
+    return a+b;
+};
 
+function substract(a,b){
+    return a-b;
+}
+
+function multiply(a,b){
+    return a*b;
+}
+function devide(a,b){
+    return a/b;
+}
+
+function operation(input){
+    if(input.includes("+")){
+        outCurrent.textContent="="+Number(calculatorObj.previousOut)+Number(calculatorObj.cuurentOut)
+        outPrevious.textContent=calculatorObj.previousOut+"+"+calculatorObj.cuurentOut;
+        calculatorObj.cuurentOut="";
+    }
+    else if(input.includes("-")){
+        outCurrent.textContent="="+Number(calculatorObj.previousOut)-Number(calculatorObj.cuurentOut)
+        outPrevious.textContent=calculatorObj.previousOut+"-"+calculatorObj.cuurentOut;
+        calculatorObj.cuurentOut="";
+    }
+    else if(input.includes("x")){
+        outCurrent.textContent="="+Number(calculatorObj.previousOut)*Number(calculatorObj.cuurentOut)
+        outPrevious.textContent=calculatorObj.previousOut+"x"+calculatorObj.cuurentOut;
+        calculatorObj.cuurentOut="";
+    }
+    else if(input.includes("/")){
+        outCurrent.textContent="="+Number(calculatorObj.previousOut)/Number(calculatorObj.cuurentOut)
+        outPrevious.textContent=calculatorObj.previousOut+"/"+calculatorObj.cuurentOut;
+        calculatorObj.cuurentOut="";
+    }
+};
 
 
 operationBtn.forEach((button)=>{
@@ -52,8 +93,10 @@ operationBtn.forEach((button)=>{
 })
 
 claerBtn.addEventListener("click", ()=>{
-    outCurrent.textContent="";
     outPrevious.textContent="";
+    outCurrent.textContent="";
+    calculatorObj.previousOut="";
+    calculatorObj.cuurentOut="";
 })
 
 operandBtn.forEach((button)=>{
@@ -61,3 +104,5 @@ operandBtn.forEach((button)=>{
 });
 
 delBtn.addEventListener("click", ()=>{deleteByEach()})
+
+equalBtn.addEventListener("click", ()=>{operation(outPrevious.innerText)})
