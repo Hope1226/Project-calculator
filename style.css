@@ -13,8 +13,9 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-}
+    }
 .calculator{
+    margin-top: 100px;
     display: grid;
     justify-content: center;
     align-content: center;

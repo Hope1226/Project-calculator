@@ -73,21 +73,18 @@ function operation(input){
         outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"-"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
-
     }
     else if(input.includes("x")){
         let result=Number(calculatorObj.previousOut)*Number(calculatorObj.cuurentOut)
         outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"x"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
-
     }
     else if(input.includes("/")){
         let result=Number(calculatorObj.previousOut)/Number(calculatorObj.cuurentOut)
         outCurrent.textContent="="+result;
         outPrevious.textContent=calculatorObj.previousOut+"/"+calculatorObj.cuurentOut;
         calculatorObj.cuurentOut="";
-
     }
 };
 
